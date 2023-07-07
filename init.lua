@@ -22,4 +22,4 @@ require("lazy").setup(plugins)
 
 require("core")
 
-require("themes").set_col("rose-pine")
+load_colour("rose-pine")
