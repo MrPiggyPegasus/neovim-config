@@ -14,10 +14,11 @@ return {
             local mason_lspconfig = require "mason-lspconfig"
             local handlers = require "plugins.lsp.handlers"
             mason_lspconfig.setup {
-                ensure_installed = { "rust_analyzer", "lua_ls" }
+                ensure_installed = { "lua_ls", "rust_analyzer" }
             }
             mason_lspconfig.setup_handlers(handlers)
 
         end
     },
+    require("plugins.lsp.cmp")
 }

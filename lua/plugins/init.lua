@@ -14,7 +14,6 @@ local plugins = {
 }
 
 -- Transform the names of modules into their return values
-
 local function load(name)
     return require ("plugins." .. name)
 end
