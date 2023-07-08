@@ -25,26 +25,33 @@ return {
                         require("luasnip").lsp_expand(args.body)
                     end,
                 },
+
                 window = {
                     completion = cmp.config.window.bordered(),
                     documentation = cmp.config.window.bordered(),
                 },
+
                 mapping = cmp.mapping.preset.insert({
                     ["<C-b>"] = cmp.mapping.scroll_docs(-4),
                     ["<C-f>"] = cmp.mapping.scroll_docs(4),
-                    ["<C-Space>"] = cmp.mapping.complete(),
                     ["<C-e>"] = cmp.mapping.abort(),
-                    ["<CR>"] = cmp.mapping.confirm({ select = true }),
+                    ["<C-Space>"] = cmp.mapping.confirm({ select = true }),
                 }),
+
                 sources = cmp.config.sources({
                     { name = "nvim_lsp" },
+                    { name = "nvim_lua" },
                     { name = "path" },
                     { name = "luasnip" },
                     { name = "buffer", keyword_length = 5 },
-                })
+                }),
+
+                experimental = {
+                    native_menu = false,
+                    ghost_text = true,
+                }
             })
 
-            -- Use buffer source for `/` and `?` (if you enabled `native_menu`, this won"t work anymore).
             cmp.setup.cmdline({ "/", "?" }, {
                 mapping = cmp.mapping.preset.cmdline(),
                 sources = {
